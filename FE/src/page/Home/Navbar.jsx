@@ -1,4 +1,4 @@
-import HomeIcon from "../../../svg/homeIcon";
+import { HomeIcon } from "../../../svg";
 import useUserStore from "../../../store/userStore";
 import useModalStore from "../../../store/modalStore";
 
@@ -21,7 +21,7 @@ function NavBar() {
   return (
     <nav className="w-full h-12 flex items-center mt-[1px] bg-blue-600 text-white font-semibold divide-x divide-gray-500">
       <div className="h-full flex items-center justify-center w-14 cursor-pointer hover:bg-blue-700">
-        <HomeIcon color={"white"} />
+        <HomeIcon />
       </div>
       <NavBlock text="About" />
       <NavBlock text="Notification" />

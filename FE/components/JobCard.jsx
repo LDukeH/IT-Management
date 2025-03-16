@@ -15,7 +15,7 @@ function JobCard(props) {
         <div className="text-lg text-black font-bold">
           Name: <span>{props.title}</span>
         </div>
-        <div className="text-black font-bold">ID: {props._id}</div>
+        <div className="text-lg text-black font-bold">ID: {props._id}</div>
       </div>
 
       {/* description */}
@@ -27,7 +27,7 @@ function JobCard(props) {
       </div>
 
       {/* date */}
-      <div className="text-black font-bold flex justify-between">
+      <div className="text-black text-lg font-bold flex justify-between">
         <div>
           Start date: <span>{dateFormat(props.startDate)}</span>
         </div>
@@ -39,9 +39,9 @@ function JobCard(props) {
       {/* assigned employee */}
       <Link
         to={`assign/${props._id}`}
-        className="h-full w-1/6 px-4 py-1 text-center rounded-xl bg-green-500 cursor-pointer font-semibold hover:bg-green-700 transition-all duration-150"
+        className="text-lg h-full w-24 px-2 text-center rounded-xl bg-green-500 cursor-pointer font-semibold hover:bg-green-700 transition-all duration-150"
       >
-        Description
+        Info
       </Link>
     </div>
   );

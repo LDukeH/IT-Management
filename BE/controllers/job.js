@@ -12,7 +12,7 @@ export const findAllJobs = async (req, res) => {
 export const findJobByID = async (req, res) => {
   try {
     const { jobID } = req.params;
-    const job = await Job.findById(jobID);
+    const job = await Job.findById(jobID).populate("employeeIds");
     res.json(job);
   } catch (error) {
     console.error(error);
@@ -30,12 +30,11 @@ export const createJob = async (req, res) => {
 
 export const assignJob = async (req, res) => {
   try {
-    const { jobID } = req.body;
-    const { employeeID } = req.body;
+    const { employeeIDS, jobID } = req.body;
 
-    const job = await Assignment.findByIdAndUpdate(
+    const job = await Job.findByIdAndUpdate(
       jobID,
-      { $addToSet: { employeeIds: { $each: employeeID } } }, // Tránh trùng lặp
+      { $addToSet: { employeeIds: { $each: employeeIDS } } },
       { new: true }
     );
 

@@ -1,14 +1,9 @@
 import { Link } from "react-router-dom";
 import JobCard from "../../../../components/JobCard";
 import useJobStore from "../../../../store/jobStore";
-import { useEffect } from "react";
 
 function JobList() {
-  const { jobs, getAllJob } = useJobStore();
-
-  useEffect(() => {
-    getAllJob();
-  }, []);
+  const { jobs } = useJobStore();
 
   return (
     <div>
@@ -37,7 +32,7 @@ function JobManage() {
         </Link>
       </div>
       <hr className="mt-2 border-gray-300" />
-      <div className="h-[calc(100vh-200px)] overflow-y-scroll">
+      <div className="h-[calc(100vh-12rem)] overflow-y-scroll">
         <JobList />
       </div>
     </div>

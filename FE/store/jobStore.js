@@ -38,6 +38,22 @@ const useJobStore = create((set, get) => {
         notifyError("Create job failed");
       }
     },
+    assignJob: async (employeeIDs, jobID) => {
+      try {
+        const data = { employeeIDS: employeeIDs, jobID: jobID };
+        console.log(data);
+        const response = await api.post(
+          "http://localhost:5000/jobs/assign",
+          data
+        );
+
+        await get().getAllJob();
+        notifySuccess("Assign job successfully");
+      } catch (error) {
+        console.error(error);
+        notifyError("Assign job failed");
+      }
+    },
   };
 });
 

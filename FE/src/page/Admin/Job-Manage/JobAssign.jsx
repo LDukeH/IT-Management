@@ -1,12 +1,32 @@
 import { useEffect, useState } from "react";
 import useJobStore from "../../../../store/jobStore";
-import { useParams } from "react-router-dom";
-import CalendarIcon from "../../../../svg/CalendarIcon";
+import useModalStore from "../../../../store/modalStore";
+import { useNavigate, useParams } from "react-router-dom";
+import AssignModal from "../../../../components/AssignModal";
+
+// icons
+import { CalendarIcon, BackIcon } from "../../../../svg";
+
+import { Link } from "react-router-dom";
+
+function AssignedUser(props) {
+  return (
+    <Link className="h-24 shadow-xl p-4 rounded-md bg-gray-50 text-base text-gray-800 font-semibold hover:scale-110 transition-all duration-150">
+      <div>Name: {props.name}</div>
+      <div>Code: {props.code}</div>
+      <div>Position: {props.position}</div>
+    </Link>
+  );
+}
 
 function JobAssign() {
   const [job, setJob] = useState({});
-  const { findJob } = useJobStore();
+  const { findJob, jobs } = useJobStore();
+  const { openAssignModal } = useModalStore();
+
   const id = useParams().id;
+
+  const navigate = useNavigate();
 
   const dateFormat = (date) => {
     return new Date(date).toLocaleDateString("vi-VN", {
@@ -22,35 +42,58 @@ function JobAssign() {
       setJob(res);
     };
     handleFetch();
-  }, []);
+  }, jobs);
 
   return (
-    <div className="w-full h-[calc(100vh-100px)] mx-auto px-12 py-4 bg-gray-50 min-h-100vh shadow-inner">
-      <div className="text-5xl text-black font-bold text-center">
-        Title: {job.title}
-      </div>
-      <div className="text-2xl my-4 flex justify-evenly w-1/2 mx-auto">
-        <div className="flex items-center">
-          <CalendarIcon />
-          <div>Start date: {dateFormat(job.startDate)}</div>
-        </div>
-        <div className="flex items-center">
-          <CalendarIcon />
-          <div>Due date: {dateFormat(job.dueDate)}</div>
-        </div>
-      </div>
-      <div className="text-3xl font-bold text-gray-800">Description:</div>
-      <hr />
-      <div className="select-none font-medium mt-1 py-2 px-4 bg-white border shadow-sm  border-slate-300 placeholder-slate-400 w-full min-h-48 rounded-md">
-        {job.description}
-      </div>
-      <div className="flex justify-between my-4 px-2">
-        <div className="text-xl">Assigned employees: </div>
-        <button className=" rounded-md bg-green-600 px-3 py-2 font-semibold text-black shadow-sm hover:bg-green-500 flex items-center gap-2 cursor-pointer">
-          Assign
+    <>
+      <AssignModal />
+      <div className="w-full px-12 py-4 bg-gray-50 min-h-100vh shadow-inner">
+        <button
+          onClick={() => {
+            navigate(-1);
+          }}
+          className="cursor-pointer transition-all duration-300 text-gray-500 hover:text-black"
+        >
+          <BackIcon />
         </button>
+        <div className="text-5xl text-black font-bold text-center">
+          Title: {job.title}
+        </div>
+        <div className="text-2xl my-4 flex justify-evenly w-full mx-auto">
+          <div className="flex items-center">
+            <CalendarIcon />
+            <div>Start date: {dateFormat(job.startDate)}</div>
+          </div>
+          <div className="flex items-center">
+            <CalendarIcon />
+            <div>Due date: {dateFormat(job.dueDate)}</div>
+          </div>
+        </div>
+        <div className="text-3xl font-bold text-gray-800">Description:</div>
+        <hr />
+        <div className="select-none font-medium mt-1 py-2 px-4 bg-white border shadow-sm  border-slate-300 placeholder-slate-400  min-h-48 rounded-md">
+          {job.description}
+        </div>
+        <div className="flex justify-between my-4 px-2">
+          <div className="text-xl text-black font-bold">
+            Assigned employees:{" "}
+          </div>
+          <button
+            className="text-base rounded-md bg-green-600 px-3 py-2 font-semibold text-black shadow-sm hover:bg-green-500 flex items-center gap-2 cursor-pointer"
+            onClick={() => {
+              openAssignModal();
+            }}
+          >
+            Assign
+          </button>
+        </div>
+        <div className="grid grid-cols-3 gap-x-4 gap-y-8 h-[calc(100vh-32rem)] overflow-y-auto px-6">
+          {job.employeeIds?.map((employee, index) => {
+            return <AssignedUser key={index} {...employee} />;
+          })}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

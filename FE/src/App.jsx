@@ -4,7 +4,6 @@ import adminRoutes from "../routes/adminRoutes";
 import { useEffect } from "react";
 import useUserStore from "../store/userStore";
 import LogoutModal from "../components/LogoutModal";
-import Loader from "../components/Loader";
 
 const router = createBrowserRouter([homeRoutes, adminRoutes]);
 

@@ -14,7 +14,7 @@ function adminPage() {
   }, []);
 
   return (
-    <div className="flex flex-col bg-white h-screen w-screen">
+    <div className="flex flex-col bg-white h-screen w-screen  overflow-hidden">
       <NavBar />
       <div className="flex flex-row items-start">
         <SideBar />

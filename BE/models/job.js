@@ -5,7 +5,7 @@ const JobSchema = new mongoose.Schema({
   description: String,
   startDate: Date,
   dueDate: Date,
-  employeeIds: [{ type: mongoose.Schema.Types.ObjectId, ref: "Employee" }],
+  employeeIds: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
 });
 
 export default mongoose.model("Job", JobSchema);
