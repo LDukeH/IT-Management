@@ -16,7 +16,7 @@ function JobList() {
 
 function JobManage() {
   return (
-    <div className="w-full px-16 bg-gray-50">
+    <div className="w-full mx-auto px-12 py-4 bg-gray-50 min-h-100vh shadow-inner">
       <div className="flex justify-between items-center">
         <h1 className="my-6 text-2xl font-semibold text-gray-700">
           Job manage:

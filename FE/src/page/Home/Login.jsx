@@ -1,6 +1,6 @@
-import { useEffect } from "react";
 import useUserStore from "../../../store/userStore";
 import { useNavigate } from "react-router-dom";
+import { UserIcon, LockIcon, ForwardIcon } from "../../../svg";
 
 function LogIn() {
   const { loginUser } = useUserStore();
@@ -13,38 +13,39 @@ function LogIn() {
     loginUser(data, navigate);
   }
   return (
-    <div className="border border-gray-500 w-2/5 h-fit ml-4 mt-20 ">
+    <div className="border h-96 w-120 my-32 ml-12 flex flex-col justify-center items-center rounded-4xl bg-white shadow-2xl">
       <form
         className="flex flex-col items-center gap-6"
         onSubmit={handleSubmit}
       >
-        <div className="bg-gray-200 w-full h-full py-2 text-center font-semibold">
-          Login
-        </div>
-        <div className="w-full ml-2 px-6 mx-auto ">
-          <label htmlFor="code" className="font-semibold text-gray-900">
-            User code:
-          </label>
+        <div className="text-2xl font-bold text-cyan-600 ">Login</div>
+        <div className="px-5 relative">
+          <div className="w-fit absolute top-2 text-cyan-700">
+            <UserIcon />
+          </div>
           <input
             type="text"
             required
-            className="w-3xs h-7 px-1 text-black border border-gray-500 rounded-md mt-1"
+            className="border-b border-b-cyan-600 font-bold p-2.5 pl-8 focus:outline-none focus:placeholder-gray-600 text-blue-950 "
+            placeholder="User code"
             name="code"
           />
         </div>
-        <div className="w-full ml-2 px-6 mx-auto">
-          <label htmlFor="name" className="font-semibold text-gray-900">
-            Password:
-          </label>
+        <div className="px-5 relative">
+          <div className="w-fit absolute top-2 text-cyan-700">
+            <LockIcon />
+          </div>
           <input
             type="password"
             required
-            className="w-3xs h-7 px-1 text-black border border-gray-500 rounded-md mt-1"
+            className="border-b border-b-cyan-600 font-bold p-2.5 pl-8 focus:outline-none focus:placeholder-gray-600 text-blue-950"
+            placeholder="Password"
             name="password"
           />
         </div>
-        <button className="inline-flex cursor-pointer items-center gap-1 rounded my-6 border border-slate-300 bg-gradient-to-b from-slate-50 to-slate-200 px-4 py-2 font-semibold hover:opacity-90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-300 focus-visible:ring-offset-2 active:opacity-100">
-          Đăng nhập
+        <button className=" border-2 border-cyan-500 p-2 mt-6 rounded-xl flex justify-center items-center gap-2 text-cyan-600 cursor-pointer hover:border-cyan-700 hover:text-cyan-700 transition-all duration-300  ">
+          Login
+          <ForwardIcon />
         </button>
       </form>
     </div>

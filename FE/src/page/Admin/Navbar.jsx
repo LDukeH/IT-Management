@@ -5,9 +5,9 @@ function navBar() {
   const { currentUser } = useUserStore();
 
   return (
-    <div className="flex flex-row justify-between items-center px-12 bg-white border border-white">
+    <div className="flex flex-row justify-between items-center px-12 bg-white  h-16">
       <Link to="/">
-        <img src={`/logo.png`} alt="logo" className="w-21 h-14"></img>
+        <img src={`/logo.png`} alt="logo" className="w-16 h-14"></img>
       </Link>
 
       {/* placeholder, change it to props once have backend service */}

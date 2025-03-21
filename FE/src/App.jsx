@@ -14,12 +14,10 @@ function App() {
   }, []);
 
   return (
-    <div className="w-screen h-screen bg-gray-200">
-      <>
-        <RouterProvider router={router} />
-        <LogoutModal />
-      </>
-    </div>
+    <>
+      <RouterProvider router={router} />
+      <LogoutModal />
+    </>
   );
 }
 

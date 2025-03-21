@@ -10,12 +10,11 @@ function Home() {
   return loading ? (
     <Loader />
   ) : (
-    <div className="w-4/5 h-full mx-auto bg-white border">
-      <div className="w-full h-36 bg-[url(/homeLogo.png)] bg-center bg-contain "></div>
+    <div className="w-full h-full bg-white  min-h-screen flex flex-col">
       <NavBar />
-      <main className="flex gap-12">
+      <main className="flex gap-12 border flex-grow">
         {currentUser ? "" : <LogIn />}
-        <div className="pt-10 w-full h-[calc(100vh-200px)] px-12 overflow-y-scroll">
+        <div className="pt-10 w-full h-full px-12 overflow-y-auto">
           <Outlet />
         </div>
       </main>

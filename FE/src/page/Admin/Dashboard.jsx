@@ -81,7 +81,7 @@ function Completed() {
 
 function DashBoard() {
   return (
-    <div className="w-full px-16 ">
+    <div className="w-full mx-auto px-12 py-4 bg-gray-50 min-h-100vh shadow-inner">
       <h1 className="my-6 text-2xl font-semibold text-gray-700">Dashboard</h1>
       <DashBoardVideo />
       <div className="grid grid-cols-1 gap-6 xl:grid-cols-4 md:grid-cols-2">
