@@ -1,7 +1,6 @@
 import useModalStore from "../store/modalStore";
 import useUserStore from "../store/userStore";
 import useJobStore from "../store/jobStore";
-import { useParams } from "react-router-dom";
 
 function UserToAssign(props) {
   return (
@@ -10,7 +9,12 @@ function UserToAssign(props) {
       className="shadow-inner px-2 border-gray-500 border-2 rounded-lg my-4 flex justify-between items-center cursor-pointer hover:border-gray-900 transition-all duration-300"
     >
       <div>
-        <div>Name: {props.name}</div>
+        <div>
+          Name: <span className="font-semibold">{props.name}</span>
+        </div>
+        <div>
+          Position: <span className="font-semibold">{props.position}</span>
+        </div>
         <div>Code: {props.code}</div>
       </div>
       <input
@@ -23,13 +27,11 @@ function UserToAssign(props) {
   );
 }
 
-function AssignModal() {
+function AssignModal({ job }) {
   const { users } = useUserStore();
   const { isAssignModalOpen, closeAssignModal } = useModalStore();
 
   const { assignJob } = useJobStore();
-
-  const jobID = useParams().id;
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -37,7 +39,7 @@ function AssignModal() {
     const data = Object.fromEntries(formData.entries());
     const ids = Object.keys(data);
 
-    assignJob([...ids], jobID);
+    assignJob([...ids], job._id);
     closeAssignModal();
   }
 

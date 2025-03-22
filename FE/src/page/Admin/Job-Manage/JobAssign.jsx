@@ -21,7 +21,7 @@ function AssignedUser(props) {
 
 function JobAssign() {
   const [job, setJob] = useState({});
-  const { findJob, jobs } = useJobStore();
+  const { findJobByID, Job } = useJobStore();
   const { openAssignModal } = useModalStore();
 
   const id = useParams().id;
@@ -38,15 +38,15 @@ function JobAssign() {
 
   useEffect(() => {
     const handleFetch = async () => {
-      const res = await findJob(id);
+      const res = await findJobByID(id);
       setJob(res);
     };
     handleFetch();
-  }, jobs);
+  }, [Job]);
 
   return (
     <>
-      <AssignModal />
+      <AssignModal job={job} />
       <div className="w-full px-12 py-4 bg-gray-50 min-h-100vh shadow-inner">
         <button
           onClick={() => {
@@ -87,7 +87,7 @@ function JobAssign() {
             Assign
           </button>
         </div>
-        <div className="grid grid-cols-3 gap-x-4 gap-y-8 h-[calc(100vh-32rem)] overflow-y-auto px-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3  gap-y-8 gap-x-4 h-[calc(100vh-32rem)] overflow-y-auto px-6">
           {job.employeeIds?.map((employee, index) => {
             return <AssignedUser key={index} {...employee} />;
           })}

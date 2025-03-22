@@ -1,7 +1,7 @@
 import useModalStore from "../store/modalStore";
 import useUserStore from "../store/userStore";
 
-const LogoutModal = () => {
+const LogoutModal = ({ navigate }) => {
   const { isLogoutModalOpen, closeLogoutModal } = useModalStore();
   const logoutUser = useUserStore((state) => state.logoutUser);
 
@@ -18,6 +18,7 @@ const LogoutModal = () => {
             onClick={() => {
               logoutUser(); // Call actual logout
               closeLogoutModal(); // Close modal after action
+              navigate("/"); // Redirect to home page
             }}
           >
             Logout

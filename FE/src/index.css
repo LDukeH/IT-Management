@@ -1,19 +1,42 @@
 @import "tailwindcss";
-
 @layer base {
   html {
-    font-size: 16px;
+    font-size: 16px; /* Mặc định */
+  }
+
+  @media (max-width: 1280px) {
+    html {
+      font-size: 15px; /* Laptop nhỏ, máy tính bảng ngang */
+    }
   }
 
   @media (max-width: 1024px) {
     html {
-      font-size: 14px;
+      font-size: 14px; /* Tablet dọc */
     }
   }
 
   @media (max-width: 860px) {
     html {
-      font-size: 12px;
+      font-size: 13px; /* Điện thoại lớn */
+    }
+  }
+
+  @media (max-width: 640px) {
+    html {
+      font-size: 12px; /* Điện thoại trung bình */
+    }
+  }
+
+  @media (max-width: 480px) {
+    html {
+      font-size: 11px; /* Điện thoại nhỏ */
+    }
+  }
+
+  @media (max-width: 360px) {
+    html {
+      font-size: 10px; /* Màn hình cực nhỏ */
     }
   }
 }

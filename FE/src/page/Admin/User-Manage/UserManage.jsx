@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 
 function UserHeader() {
   return (
-    <thead>
-      <tr className="text-xs border text-center text-gray-500 uppercase border-gray-100">
+    <thead className="bg-gray-200">
+      <tr className="text-xs  text-center text-gray-500 uppercase bg-gray-200 sticky top-0 z-10">
         <th className="px-4 py-3 text-gray-700 text-base">Code</th>
         <th className="px-4 py-3 text-gray-700 text-base">Name</th>
         <th className="px-4 py-3 text-gray-700 text-base">Position</th>
@@ -36,16 +36,18 @@ function UserManage() {
           Add
         </Link>
       </div>
-      <table className="w-full mt-4">
-        <UserHeader />
-        <tbody>
-          {users
-            .filter((user) => user.role != "Admin")
-            .map((user) => (
-              <UserCard key={user._id} {...user} />
-            ))}
-        </tbody>
-      </table>
+      <div className="relative mt-4 overflow-auto h-68 max-h-96">
+        <table className="w-full border-collapse ">
+          <UserHeader />
+          <tbody>
+            {users
+              .filter((user) => user.role != "Admin")
+              .map((user) => (
+                <UserCard key={user._id} {...user} />
+              ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

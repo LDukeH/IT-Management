@@ -8,7 +8,6 @@ export const verifyToken = (req, res, next) => {
       .status(401)
       .json({ message: "Access Denied: No Token Provided" });
   }
-
   try {
     const decoded = jwt.verify(token, "secret_key");
     console.log(decoded);

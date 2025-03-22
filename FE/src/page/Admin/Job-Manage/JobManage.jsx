@@ -32,7 +32,7 @@ function JobManage() {
         </Link>
       </div>
       <hr className="mt-2 border-gray-300" />
-      <div className="h-[calc(100vh-12rem)] overflow-y-scroll">
+      <div className="h-[calc(100vh-14rem)] overflow-y-scroll">
         <JobList />
       </div>
     </div>

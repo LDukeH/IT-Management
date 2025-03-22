@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import api from "../axios.js";
 import { notifySuccess, notifyError } from "../utils/notify.js";
+import user from "../../BE/models/user.js";
 
 const useUserStore = create((set, get) => {
   return {
@@ -38,8 +39,8 @@ const useUserStore = create((set, get) => {
           data
         );
         set({ currentUser: response.data });
-
-        if (response.data.position === "Admin") {
+        const user = response.data;
+        if (user.position === "Admin") {
           navigate("/admin/dashboard");
         }
 

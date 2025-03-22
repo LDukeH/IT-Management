@@ -17,9 +17,21 @@ const useJobStore = create((set, get) => {
       }
       set({ loading: false });
     },
-    findJob: async (jobID) => {
+    findJobByID: async (jobID) => {
       try {
         const response = await api.get(`http://localhost:5000/jobs/${jobID}`);
+        return response.data;
+      } catch (error) {
+        console.error(error);
+        notifyError("There was an error when fetching data");
+      }
+    },
+    findJobByUserID: async (userID) => {
+      try {
+        const response = await api.get(
+          `http://localhost:5000/jobs/user/${userID}`
+        );
+        console.log(response.data);
         return response.data;
       } catch (error) {
         console.error(error);
