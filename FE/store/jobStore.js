@@ -31,7 +31,6 @@ const useJobStore = create((set, get) => {
         const response = await api.get(
           `http://localhost:5000/jobs/user/${userID}`
         );
-        console.log(response.data);
         return response.data;
       } catch (error) {
         console.error(error);

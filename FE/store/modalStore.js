@@ -7,7 +7,6 @@ const useModalStore = create((set) => ({
 
   isAssignModalOpen: false,
   openAssignModal: () => {
-    console.log("Opening assign modal");
     set({ isAssignModalOpen: true });
   },
   closeAssignModal: () => set({ isAssignModalOpen: false }),

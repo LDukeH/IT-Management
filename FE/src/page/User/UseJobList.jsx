@@ -19,9 +19,12 @@ function UserJobList({ user }) {
   }, []);
   return jobs.length > 0 ? (
     <div className="overflow-y-auto border p-4 rounded-xl flex flex-col gap-3 h-full">
-      {jobs.map((job) => (
-        <div className="border p-2 rounded-2xl">
-          <Link key={job._id} className="cursor-pointer">
+      {jobs.map((job, index) => (
+        <div
+          className="border p-2 rounded-2xl hover:scale-105 transition-all duration-300"
+          key={index}
+        >
+          <Link to={`/jobs/${job._id}`}>
             <div className="font-bold">{job.title}</div>
             <div className="font-semibold">Description:</div>
             <div>{job.description}</div>

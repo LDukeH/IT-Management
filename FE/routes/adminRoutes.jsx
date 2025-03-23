@@ -5,10 +5,15 @@ import UserCreate from "../src/page/Admin/User-Manage/UserCreate.jsx";
 import JobManage from "../src/page/Admin/Job-Manage/JobManage.jsx";
 import JobCreate from "../src/page/Admin/Job-Manage/JobCreate.jsx";
 import JobAssign from "../src/page/Admin/Job-Manage/JobAssign.jsx";
+import { ProtectedAdmin } from "./ProtectedRoutes.jsx";
 
 const adminRoutes = {
   path: "/admin",
-  element: <AdminPage />,
+  element: (
+    <ProtectedAdmin>
+      <AdminPage />
+    </ProtectedAdmin>
+  ),
   children: [
     { path: "dashboard", element: <DashBoard /> },
     {

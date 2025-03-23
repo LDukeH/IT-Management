@@ -10,7 +10,6 @@ import { useEffect } from "react";
 // Store goes here
 import useUserStore from "../store/userStore";
 //
-import { useNavigate } from "react-router-dom";
 import Layout from "./Layout";
 
 const router = createBrowserRouter([
@@ -21,7 +20,7 @@ const router = createBrowserRouter([
   },
 ]);
 function App() {
-  const { getCurrentUser, loading } = useUserStore();
+  const { getCurrentUser, currentUser } = useUserStore();
   useEffect(() => {
     getCurrentUser();
   }, []);
