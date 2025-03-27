@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 
 import jobRoute from "./routes/job.js";
 import userRoute from "./routes/user.js";
+import notificationRoute from "./routes/notification.js";
 
 dotenv.config();
 
@@ -23,6 +24,7 @@ app.use(cookieParser());
 
 app.use("/jobs", jobRoute);
 app.use("/users", userRoute);
+app.use("/notifications", notificationRoute);
 
 mongoose
   .connect(process.env.MONGO_URI)

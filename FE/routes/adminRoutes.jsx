@@ -9,11 +9,7 @@ import { ProtectedAdmin } from "./ProtectedRoutes.jsx";
 
 const adminRoutes = {
   path: "/admin",
-  element: (
-    <ProtectedAdmin>
-      <AdminPage />
-    </ProtectedAdmin>
-  ),
+  element: <AdminPage />,
   children: [
     { path: "dashboard", element: <DashBoard /> },
     {

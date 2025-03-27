@@ -40,7 +40,7 @@ function JobInformation() {
 
   return (
     <>
-      <div className="w-full px-12 py-4 bg-gray-50 min-h-100vh shadow-inner">
+      <div className="w-full mx-auto px-12 py-4 mt-5 bg-gray-50 shadow-inner">
         <button
           onClick={() => {
             navigate(-1);
@@ -64,7 +64,7 @@ function JobInformation() {
         </div>
         <div className="text-3xl font-bold text-gray-800">Description:</div>
         <hr />
-        <div className="select-none font-medium mt-1 py-2 px-4 bg-white border shadow-sm  border-slate-300 placeholder-slate-400  min-h-48 rounded-md">
+        <div className="select-none font-medium mt-1 py-2 px-4 bg-white border shadow-sm  border-slate-300 placeholder-slate-400  min-h-36 rounded-md">
           {job.description}
         </div>
         <div className="flex justify-between my-4 px-2">

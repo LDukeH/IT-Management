@@ -1,5 +1,5 @@
 function Intro() {
-  return <div className="max-h-full">This is introduce</div>;
+  return <div className="max-h-full">Introduce</div>;
 }
 
 export default Intro;

@@ -21,7 +21,7 @@ function adminPage() {
       <Navbar />
       <div className="flex flex-row items-start">
         <SideBar />
-        <div className="w-full h-full">
+        <div className="w-full h-full max-h-[calc(100vh-4rem)] ">
           <Outlet />
         </div>
       </div>

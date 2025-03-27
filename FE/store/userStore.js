@@ -69,6 +69,19 @@ const useUserStore = create(
         }
         set({ loading: false });
       },
+      editUser: async (data) => {
+        try {
+          const response = await api.put(
+            `http://localhost:5000/users/update`,
+            data,
+            { headers: { "Content-Type": "multipart/form-data" } }
+          );
+          notifySuccess("Edit information successfully");
+          await get().getAllUser();
+        } catch (error) {
+          notifyError("Edit user failed");
+        }
+      },
     };
   })
 );

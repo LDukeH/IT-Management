@@ -1,9 +1,19 @@
+import { Link } from "react-router-dom";
+
 function UserDetail({ user }) {
   return (
     <div className="border pl-4 pt-4 rounded-xl flex flex-col gap-3 h-full">
-      <div className="flex flex-col">
-        <span className="font-bold">Email address: </span>
-        <span>{user.email}</span>
+      <div className="flex flex-row justify-between">
+        <div>
+          <span className="font-bold">Email address: </span>
+          <span>{user.email}</span>
+        </div>
+        <Link
+          className="px-6 font-semibold cursor-pointer underline text-blue-400"
+          to="/user/edit"
+        >
+          Edit your Profile
+        </Link>
       </div>
       <div className="flex flex-col">
         <span className="font-bold">User Code:</span>

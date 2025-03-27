@@ -6,6 +6,7 @@ const UserSchema = new mongoose.Schema({
   code: String,
   password: String,
   position: String,
+  image: String,
 });
 
 export default mongoose.model("User", UserSchema);

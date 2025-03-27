@@ -13,7 +13,7 @@ function Home() {
       <Navbar />
       <main className="flex gap-12 border flex-grow">
         {currentUser ? "" : <LogIn />}
-        <div className="pt-10 w-full h-full px-12 overflow-y-auto">
+        <div className="w-full h-full px-12 overflow-y-auto">
           <Outlet />
         </div>
       </main>

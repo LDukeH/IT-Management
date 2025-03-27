@@ -4,11 +4,14 @@ import UserDropdown from "../components/UserDropdown";
 
 import { Link } from "react-router-dom";
 
-function NavBlock({ text }) {
+function NavBlock({ text, link }) {
   return (
-    <button className="h-full w-full flex items-center rounded-xl justify-center px-4 cursor-pointer text-sm hover:bg-sky-700 transition-all duration-150">
+    <Link
+      to={link}
+      className="h-full w-full flex items-center rounded-xl justify-center px-4 cursor-pointer text-sm hover:bg-sky-700 transition-all duration-150"
+    >
       {text}
-    </button>
+    </Link>
   );
 }
 
@@ -21,9 +24,9 @@ function Navbar() {
         <img src="/logo.png" className="w-12 h-12" />
       </Link>
       <div className="flex h-full gap-1">
-        <NavBlock text="Home" />
+        <NavBlock text="Home" link="/" />
         <NavBlock text="About" />
-        <NavBlock text="Notification" />
+        <NavBlock text="Notification" link="/notification" />
         <NavBlock text="Rules - Guides" />
         <NavBlock text="Schedule" />
         {!currentUser ? "" : <></>}
