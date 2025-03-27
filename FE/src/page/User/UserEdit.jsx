@@ -39,7 +39,7 @@ function Input(props) {
         id={props.name}
         name={props.name}
         required={false || props.required}
-        className="inputHighlight font-medium mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 w-1/2 rounded-md sm:text-sm"
+        className="font-medium mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 w-1/2 rounded-md sm:text-sm"
       />
     </div>
   );
@@ -131,7 +131,7 @@ function UserEdit() {
         </div>
 
         {/* submit and back */}
-        <div className="flex pl-24 mt-4 gap-2">
+        <div className="flex pl-24 my-4 gap-2">
           <button
             type="submit"
             className="rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-black shadow-sm hover:bg-green-500 flex items-center gap-2 cursor-pointer"

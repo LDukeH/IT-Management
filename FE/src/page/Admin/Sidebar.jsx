@@ -85,6 +85,15 @@ function ManagementTab() {
             Job
           </Link>
         </li>
+        <li className="px-2 py-1  transition-colors duration-150 ">
+          {/* change to link router later */}
+          <Link
+            className="w-full text-base text-gray-500 no-underline duration-150 hover:text-gray-800"
+            to="notification"
+          >
+            Notification
+          </Link>
+        </li>
       </ul>
     </div>
   );

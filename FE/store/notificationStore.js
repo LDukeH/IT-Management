@@ -19,6 +19,22 @@ const useNotificationStore = create((set, get) => {
       }
       set({ loading: false });
     },
+    createNotification: async (data) => {
+      set({ loading: true });
+      try {
+        const response = await api.post(
+          "http://localhost:5000/notifications/create",
+          data
+        );
+        console.log(response.data);
+
+        await get().getAllNotification();
+        notifySuccess("Create notification successfully");
+      } catch (error) {
+        notifyError("Create job failed");
+        console.error(error);
+      }
+    },
   };
 });
 

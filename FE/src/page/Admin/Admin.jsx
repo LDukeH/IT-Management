@@ -22,7 +22,9 @@ function adminPage() {
       <div className="flex flex-row items-start">
         <SideBar />
         <div className="w-full h-full max-h-[calc(100vh-4rem)] ">
-          <Outlet />
+          <div className="w-full mx-auto px-12 py-4 bg-gray-50 h-[calc(100vh-6rem)] shadow-inner">
+            <Outlet />
+          </div>
         </div>
       </div>
     </div>
