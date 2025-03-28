@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import useModalStore from "../store/modalStore";
 
 function JobCard(props) {
+  const { openDeleteModal } = useModalStore();
+
   function dateFormat(date) {
     return new Date(date).toLocaleDateString("vi-VN", {
       year: "numeric",
@@ -37,12 +40,20 @@ function JobCard(props) {
       </div>
 
       {/* assigned employee */}
-      <Link
-        to={`assign/${props._id}`}
-        className="text-lg h-full w-24 px-2 text-center rounded-xl bg-green-500 cursor-pointer font-semibold hover:bg-green-700 transition-all duration-150"
-      >
-        Info
-      </Link>
+      <div className="flex justify-between px-2">
+        <Link
+          to={`assign/${props._id}`}
+          className="text-lg h-full w-24 px-2 text-center rounded-xl bg-green-500 cursor-pointer font-semibold hover:bg-green-700 transition-all duration-150"
+        >
+          Info
+        </Link>
+        <button
+          className="text-lg h-full w-24 px-2 text-center rounded-xl bg-red-500 cursor-pointer font-semibold hover:bg-red-700 transition-all duration-150"
+          onClick={openDeleteModal}
+        >
+          Delete
+        </button>
+      </div>
     </div>
   );
 }

@@ -5,7 +5,6 @@ import jwt from "jsonwebtoken";
 export const getAllUser = async (req, res) => {
   try {
     const allUser = await User.find();
-    console.log(allUser);
     res.json(allUser);
   } catch (error) {
     console.error(error);
@@ -65,9 +64,13 @@ export const login = async (req, res) => {
     return res.status(401).send("Invalid credentials");
   }
 
-  const token = jwt.sign({ code: foundUser.code }, "secret_key", {
-    expiresIn: "1h",
-  });
+  const token = jwt.sign(
+    { code: foundUser.code, position: foundUser.position },
+    "secret_key",
+    {
+      expiresIn: "1h",
+    }
+  );
   res.cookie("token", token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
@@ -89,9 +92,6 @@ export const logout = async (req, res) => {
 
 export const editUser = async (req, res) => {
   try {
-    console.log("req.file:", req.file); // Check if file exists
-    console.log("req.body:", req.body);
-
     const updates = req.body;
 
     if (req.file) {
@@ -107,9 +107,6 @@ export const editUser = async (req, res) => {
         delete updates[key];
       }
     });
-
-    console.log(updates);
-
     const updatedUser = await User.findOneAndUpdate(
       { _id: updates.id },
       updates,
@@ -118,5 +115,16 @@ export const editUser = async (req, res) => {
     res.json(updatedUser);
   } catch (error) {
     console.error(error);
+  }
+};
+
+export const deleteUser = async (req, res) => {
+  try {
+    const { userID } = req.params;
+
+    const user = userID.findByIdAndDelete(userID);
+    res.json(user);
+  } catch (error) {
+    console.log(error);
   }
 };

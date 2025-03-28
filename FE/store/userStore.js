@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import api from "../axios.js";
 import { notifySuccess, notifyError } from "../utils/notify.js";
+import { deleteUser } from "../../BE/controllers/user.js";
 
 const useUserStore = create(
   persist((set, get) => {
@@ -80,6 +81,17 @@ const useUserStore = create(
           await get().getAllUser();
         } catch (error) {
           notifyError("Edit user failed");
+        }
+      },
+      deleteUser: async (userID) => {
+        try {
+          const response = await api.delete(
+            `http://localhost:5000/users/${userID}`
+          );
+          await get().getAllUser();
+          notifySuccess("Delete user successfully");
+        } catch (error) {
+          console.log(error);
         }
       },
     };

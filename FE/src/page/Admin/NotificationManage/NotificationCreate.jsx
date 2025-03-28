@@ -4,7 +4,7 @@ import { useState } from "react";
 
 function Input(props) {
   return (
-    <div>
+    <div className="w-full">
       <label htmlFor={props.name} className="text-gray-600 font-medium text-sm">
         {props.name.toUpperCase()}
       </label>
@@ -24,7 +24,7 @@ const position = ["Employee", "Manager"];
 
 function Selector(props) {
   return (
-    <div>
+    <div className="w-1/2">
       <label className="text-gray-600 font-medium text-sm">
         {props.name.toUpperCase()}
       </label>
@@ -75,13 +75,18 @@ function NotificationCreate() {
         encType="multipart/form-data"
       >
         <div className="grid grid-cols-2 gap-x-12 gap-y-6 px-24 ">
-          <Input name="title" placeholder="Title" type="text" />
+          <div className="col-span-2">
+            {" "}
+            <Input name="title" placeholder="Title" type="text" />
+          </div>
 
-          <Selector name="for" options={position} />
+          <div className="col-span-2">
+            <Selector name="for" options={position} />
+          </div>
 
           <div className="flex flex-col gap-2 col-span-2">
             <label className="text-gray-600 font-medium text-sm">
-              Description
+              DESCRIPTION
             </label>
             <textarea
               value={text}
@@ -106,7 +111,7 @@ function NotificationCreate() {
               <path d="M9.878,18.122a3,3,0,0,0,4.244,0l3.211-3.211A1,1,0,0,0,15.919,13.5l-2.926,2.927L13,1a1,1,0,0,0-1-1h0a1,1,0,0,0-1,1l-.009,15.408L8.081,13.5a1,1,0,0,0-1.414,1.415Z" />
               <path d="M23,16h0a1,1,0,0,0-1,1v4a1,1,0,0,1-1,1H3a1,1,0,0,1-1-1V17a1,1,0,0,0-1-1H1a1,1,0,0,0-1,1v4a3,3,0,0,0,3,3H21a3,3,0,0,0,3-3V17A1,1,0,0,0,23,16Z" />
             </svg>
-            Create user
+            Create notification
           </button>
           <Link
             to="/admin/user"

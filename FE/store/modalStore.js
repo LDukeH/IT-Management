@@ -10,6 +10,10 @@ const useModalStore = create((set) => ({
     set({ isAssignModalOpen: true });
   },
   closeAssignModal: () => set({ isAssignModalOpen: false }),
+
+  isDeleteModalOpen: false,
+  openDeleteModal: () => set({ isDeleteModalOpen: true }),
+  closeDeleteModal: () => set({ isDeleteModalOpen: false }),
 }));
 
 export default useModalStore;

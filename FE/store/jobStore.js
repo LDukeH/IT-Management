@@ -49,10 +49,20 @@ const useJobStore = create((set, get) => {
         notifyError("Create job failed");
       }
     },
+    deleteJob: async (jobID) => {
+      try {
+        const response = await api.delete(
+          `http://localhost:5000/jobs/${jobID}`
+        );
+        await get().getAllJob();
+        notifySuccess("Delete job successfully");
+      } catch (error) {
+        console.log(error);
+      }
+    },
     assignJob: async (employeeIDs, jobID) => {
       try {
         const data = { employeeIDS: employeeIDs, jobID: jobID };
-        console.log(data);
         const response = await api.post(
           "http://localhost:5000/jobs/assign",
           data

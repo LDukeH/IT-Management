@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import api from "../axios.js";
 import { notifySuccess, notifyError } from "../utils/notify.js";
+import { deleteNotification } from "../../BE/controllers/notification.js";
 
 const useNotificationStore = create((set, get) => {
   return {
@@ -11,7 +12,6 @@ const useNotificationStore = create((set, get) => {
         const response = await api.get(
           "http://localhost:5000/notifications/all"
         );
-        console.log(response.data);
         set({ notifications: response.data });
       } catch (error) {
         console.error(error);
@@ -26,13 +26,21 @@ const useNotificationStore = create((set, get) => {
           "http://localhost:5000/notifications/create",
           data
         );
-        console.log(response.data);
 
         await get().getAllNotification();
         notifySuccess("Create notification successfully");
       } catch (error) {
         notifyError("Create job failed");
         console.error(error);
+      }
+    },
+    deleteNotification: async (notificationID) => {
+      try {
+        const response = await api.delete(
+          `http://localhost:5000/notifications/${notificationID}`
+        );
+      } catch (error) {
+        console.log(error);
       }
     },
   };

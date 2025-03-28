@@ -19,3 +19,13 @@ export const createNotification = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+
+export const deleteNotification = async (req, res) => {
+  try {
+    const { notificationID } = req.params;
+    const notification = await Notification.findByIdAndDelete(notificationID);
+    res.json(notification);
+  } catch (error) {
+    console.log(error);
+  }
+};

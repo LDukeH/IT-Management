@@ -55,3 +55,13 @@ export const assignJob = async (req, res) => {
     console.error(error);
   }
 };
+
+export const deleteJob = async (req, res) => {
+  try {
+    const { jobID } = req.params;
+    const job = await Job.findByIdAndDelete(jobID);
+    res.json(job);
+  } catch (error) {
+    console.log(error);
+  }
+};

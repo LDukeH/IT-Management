@@ -32,9 +32,12 @@ function NotificationCard(props) {
         <div>
           Date: <span>{dateFormat(props.date)}</span>
         </div>
+        <div>
+          For: <span>{props.for}</span>
+        </div>
       </div>
 
-      {/* assigned employee */}
+      {/* detailed information */}
       <Link
         to={`info/${props._id}`}
         className="text-lg h-full w-24 px-2 text-center rounded-xl bg-green-500 cursor-pointer font-semibold hover:bg-green-700 transition-all duration-150"
