@@ -10,7 +10,6 @@ export const verifyToken = (req, res, next) => {
   }
   try {
     const decoded = jwt.verify(token, "secret_key");
-
     req.user = decoded;
     next();
   } catch (error) {
@@ -25,9 +24,7 @@ export const verifyAdmin = (req, res, next) => {
   try {
     const decoded = jwt.verify(token, "secret_key");
 
-    const { position } = decoded.position;
-
-    if (position !== "Admin") {
+    if (decoded.position !== "Admin") {
       return res.status(403).json({ message: "Access Denied: Not an Admin" });
     }
     next();

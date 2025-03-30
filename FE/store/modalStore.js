@@ -11,8 +11,12 @@ const useModalStore = create((set) => ({
   },
   closeAssignModal: () => set({ isAssignModalOpen: false }),
 
+  toDelete: { id: "", type: "" },
   isDeleteModalOpen: false,
-  openDeleteModal: () => set({ isDeleteModalOpen: true }),
+  openDeleteModal: (id, name, type) => {
+    set({ isDeleteModalOpen: true });
+    set({ toDelete: { id: id, name: name, type: type } });
+  },
   closeDeleteModal: () => set({ isDeleteModalOpen: false }),
 }));
 

@@ -21,7 +21,7 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  const { getCurrentUser, currentUser } = useUserStore();
+  const { getCurrentUser } = useUserStore();
   const { getAllNotification } = useNotificationStore();
   useEffect(() => {
     getCurrentUser();

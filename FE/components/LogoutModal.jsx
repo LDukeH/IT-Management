@@ -1,7 +1,10 @@
 import useModalStore from "../store/modalStore";
 import useUserStore from "../store/userStore";
+import { useNavigate } from "react-router-dom";
 
-const LogoutModal = ({ navigate }) => {
+const LogoutModal = () => {
+  const navigate = useNavigate();
+
   const { isLogoutModalOpen, closeLogoutModal } = useModalStore();
   const logoutUser = useUserStore((state) => state.logoutUser);
 

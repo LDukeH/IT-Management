@@ -1,15 +1,15 @@
+import DeleteModal from "../components/DeleteModal";
 import LogoutModal from "../components/LogoutModal";
 
 //
-import { useNavigate, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 function Layout() {
-  const navigate = useNavigate();
-
   return (
     <>
       <Outlet />
-      <LogoutModal navigate={navigate} />
+      <LogoutModal />
+      <DeleteModal />
     </>
   );
 }

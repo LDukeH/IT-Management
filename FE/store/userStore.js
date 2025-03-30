@@ -2,7 +2,6 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import api from "../axios.js";
 import { notifySuccess, notifyError } from "../utils/notify.js";
-import { deleteUser } from "../../BE/controllers/user.js";
 
 const useUserStore = create(
   persist((set, get) => {
@@ -66,7 +65,11 @@ const useUserStore = create(
           const response = await api.get("http://localhost:5000/users/current");
           set({ currentUser: response.data });
         } catch (error) {
-          console.error(error);
+          if (error.response?.status === 401) {
+            notifyError("There's no account logged in");
+          } else {
+            notifyError("Something went wrong. Please try again later.");
+          }
         }
         set({ loading: false });
       },

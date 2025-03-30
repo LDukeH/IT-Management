@@ -1,7 +1,6 @@
 import { create } from "zustand";
 import api from "../axios.js";
 import { notifySuccess, notifyError } from "../utils/notify.js";
-import { deleteNotification } from "../../BE/controllers/notification.js";
 
 const useNotificationStore = create((set, get) => {
   return {
@@ -39,6 +38,8 @@ const useNotificationStore = create((set, get) => {
         const response = await api.delete(
           `http://localhost:5000/notifications/${notificationID}`
         );
+        await get().getAllNotification();
+        notifySuccess("Delete notification successfully");
       } catch (error) {
         console.log(error);
       }

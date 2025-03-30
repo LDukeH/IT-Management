@@ -8,12 +8,16 @@ export const getAllUser = async (req, res) => {
     res.json(allUser);
   } catch (error) {
     console.error(error);
+    res.status(500).json({ message: "Server error" });
   }
 };
 
 export const getCurrentUser = async (req, res) => {
   try {
     const code = req.user.code;
+    if (!code) {
+      return res.status(401).send("Unauthorized access");
+    }
     const foundUser = await User.findOne({ code });
 
     res.json(foundUser);
@@ -40,6 +44,7 @@ export const findUserByCode = async (req, res) => {
     res.json(foundUser);
   } catch (error) {
     console.error(error);
+    res.status(500).json({ message: "Server error" });
   }
 };
 
@@ -53,6 +58,7 @@ export const createUser = async (req, res) => {
     res.json(newUser);
   } catch (error) {
     console.error(error);
+    res.status(500).json({ message: "Server error" });
   }
 };
 
@@ -87,6 +93,7 @@ export const logout = async (req, res) => {
     res.json("Logout success");
   } catch (error) {
     console.error(error);
+    res.status(500).json({ message: "Server error" });
   }
 };
 
@@ -115,6 +122,7 @@ export const editUser = async (req, res) => {
     res.json(updatedUser);
   } catch (error) {
     console.error(error);
+    res.status(500).json({ message: "Server error" });
   }
 };
 
@@ -122,9 +130,10 @@ export const deleteUser = async (req, res) => {
   try {
     const { userID } = req.params;
 
-    const user = userID.findByIdAndDelete(userID);
+    const user = await User.findByIdAndDelete(userID);
     res.json(user);
   } catch (error) {
     console.log(error);
+    res.status(500).json({ message: "Server error" });
   }
 };

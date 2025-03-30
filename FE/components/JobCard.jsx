@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
-import useModalStore from "../store/modalStore";
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import useJobStore from "../store/jobStore.js";
 
 function JobCard(props) {
-  const { openDeleteModal } = useModalStore();
+  const [openDelete, setOpenDelete] = useState(false);
+  const { deleteJob } = useJobStore();
 
   function dateFormat(date) {
     return new Date(date).toLocaleDateString("vi-VN", {
@@ -40,19 +43,54 @@ function JobCard(props) {
       </div>
 
       {/* assigned employee */}
-      <div className="flex justify-between px-2">
+      <div className="flex justify-between px-8">
         <Link
           to={`assign/${props._id}`}
           className="text-lg h-full w-24 px-2 text-center rounded-xl bg-green-500 cursor-pointer font-semibold hover:bg-green-700 transition-all duration-150"
         >
           Info
         </Link>
-        <button
-          className="text-lg h-full w-24 px-2 text-center rounded-xl bg-red-500 cursor-pointer font-semibold hover:bg-red-700 transition-all duration-150"
-          onClick={openDeleteModal}
-        >
-          Delete
-        </button>
+        <div>
+          <AnimatePresence mode="wait">
+            {!openDelete ? (
+              <motion.div
+                // need a key so exit works, can be on any of the divs here
+                key="delete"
+                initial={{ scaleX: 0, originX: 1 }}
+                animate={{ scaleX: 1, originX: 1 }}
+                transition={{ duration: 0.05 }}
+                className="bg-red-500 hover:bg-red-700 cursor-pointer rounded-xl px-4 transition-all duration-200  text-lg font-semibold"
+                onClick={() => setOpenDelete(true)}
+              >
+                Delete
+              </motion.div>
+            ) : (
+              <motion.div
+                className="flex flex-row w-full overflow-hidden rounded-xl  text-lg font-semibold cursor-pointer"
+                initial={{ scaleX: 0, originX: 1 }}
+                animate={{ scaleX: 1, originX: 1 }}
+                exit={{ scaleX: 0, originX: 1 }}
+                transition={{ duration: 0.2, ease: "linear" }}
+              >
+                <div
+                  className="bg-red-500 px-4 hover:bg-red-700  transition-all duration-200"
+                  onClick={() => {
+                    console.log(props._id);
+                    deleteJob(props._id);
+                  }}
+                >
+                  Yes, Delete
+                </div>
+                <div
+                  className="bg-gray-500 px-4 hover:bg-gray-700  transition-all duration-200"
+                  onClick={() => setOpenDelete(false)}
+                >
+                  Cancel
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
     </div>
   );
