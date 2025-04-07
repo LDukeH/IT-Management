@@ -1,5 +1,5 @@
-import useModalStore from "../store/modalStore";
-import useUserStore from "../store/userStore";
+import useModalStore from "../../store/modalStore";
+import useUserStore from "../../store/userStore";
 import { useNavigate } from "react-router-dom";
 
 const LogoutModal = () => {

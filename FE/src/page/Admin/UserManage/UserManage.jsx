@@ -1,6 +1,5 @@
-import { useEffect } from "react";
 import useUserStore from "../../../../store/userStore";
-import UserCard from "../../../../components/UserCard";
+import UserCard from "../../../../components/cards/UserCard";
 import { Link } from "react-router-dom";
 
 function UserHeader() {

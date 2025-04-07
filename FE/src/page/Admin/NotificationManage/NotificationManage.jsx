@@ -1,5 +1,5 @@
 import useNotificationStore from "../../../../store/notificationStore";
-import NotificationCard from "../../../../components/NotificationCard";
+import NotificationCard from "../../../../components/cards/NotificationCard";
 import { Link } from "react-router-dom";
 
 function NotificationList() {

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import useJobStore from "../../../../store/jobStore";
 import useModalStore from "../../../../store/modalStore";
 import { useNavigate, useParams } from "react-router-dom";
-import AssignModal from "../../../../components/AssignModal";
+import AssignModal from "../../../../components/modals/AssignModal";
 
 // icons
 import { CalendarIcon, BackIcon } from "../../../../svg";

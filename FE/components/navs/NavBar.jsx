@@ -1,6 +1,6 @@
-import useUserStore from "../store/userStore";
+import useUserStore from "../../store/userStore";
 
-import UserDropdown from "../components/UserDropdown";
+import UserDropdown from "../../components/UserDropdown";
 
 import { Link } from "react-router-dom";
 
@@ -15,7 +15,7 @@ function NavBlock({ text, link }) {
   );
 }
 
-function Navbar() {
+function NavBar() {
   const { currentUser } = useUserStore();
 
   return (
@@ -36,4 +36,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default NavBar;

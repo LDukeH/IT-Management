@@ -1,6 +1,6 @@
-import useModalStore from "../store/modalStore";
-import useUserStore from "../store/userStore";
-import useJobStore from "../store/jobStore";
+import useModalStore from "../../store/modalStore";
+import useUserStore from "../../store/userStore";
+import useJobStore from "../../store/jobStore";
 
 function UserToAssign(props) {
   return (

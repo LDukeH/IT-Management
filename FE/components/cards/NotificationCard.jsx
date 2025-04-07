@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import useJobStore from "../store/jobStore.js";
+import useNotificationStore from "../../store/notificationStore";
 
-function JobCard(props) {
+function NotificationCard(props) {
   const [openDelete, setOpenDelete] = useState(false);
-  const { deleteJob } = useJobStore();
+  const { deleteNotification } = useNotificationStore();
 
   function dateFormat(date) {
     return new Date(date).toLocaleDateString("vi-VN", {
@@ -26,8 +26,8 @@ function JobCard(props) {
 
       {/* description */}
       <div>
-        <div className="text-xl text-black font-bold">Description</div>
-        <div className="bg-gray-50 rounded-xl px-4 py-2 mt-2 whitespace-pre-wrap">
+        <div className="text-xl text-black font-bold">Description:</div>
+        <div className="bg-gray-50 rounded-xl px-4 py-1 mt-2 text-wrap line-clamp-5 whitespace-pre-wrap">
           {props.description}
         </div>
       </div>
@@ -35,17 +35,17 @@ function JobCard(props) {
       {/* date */}
       <div className="text-black text-lg font-bold flex justify-between">
         <div>
-          Start date: <span>{dateFormat(props.startDate)}</span>
+          Date: <span>{dateFormat(props.date)}</span>
         </div>
         <div>
-          Due date: <span>{dateFormat(props.dueDate)}</span>
+          For: <span>{props.for}</span>
         </div>
       </div>
 
-      {/* assigned employee */}
+      {/* detailed information */}
       <div className="flex justify-between px-8">
         <Link
-          to={`assign/${props._id}`}
+          to={`info/${props._id}`}
           className="text-lg h-full w-24 px-2 text-center rounded-xl bg-green-500 cursor-pointer font-semibold hover:bg-green-700 transition-all duration-150"
         >
           Info
@@ -76,7 +76,7 @@ function JobCard(props) {
                   className="bg-red-500 px-4 hover:bg-red-700  transition-all duration-200"
                   onClick={() => {
                     console.log(props._id);
-                    deleteJob(props._id);
+                    deleteNotification(props._id);
                   }}
                 >
                   Yes, Delete
@@ -96,4 +96,4 @@ function JobCard(props) {
   );
 }
 
-export default JobCard;
+export default NotificationCard;

@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import useNotificationStore from "../store/notificationStore";
+import { AnimatePresence, motion } from "framer-motion";
+import useJobStore from "../../store/jobStore";
 
-function NotificationCard(props) {
+function JobCard(props) {
   const [openDelete, setOpenDelete] = useState(false);
-  const { deleteNotification } = useNotificationStore();
+  const { deleteJob } = useJobStore();
 
   function dateFormat(date) {
     return new Date(date).toLocaleDateString("vi-VN", {
@@ -26,8 +26,8 @@ function NotificationCard(props) {
 
       {/* description */}
       <div>
-        <div className="text-xl text-black font-bold">Description:</div>
-        <div className="bg-gray-50 rounded-xl px-4 py-1 mt-2 text-wrap line-clamp-5 whitespace-pre-wrap">
+        <div className="text-xl text-black font-bold">Description</div>
+        <div className="bg-gray-50 rounded-xl px-4 py-2 mt-2 whitespace-pre-wrap">
           {props.description}
         </div>
       </div>
@@ -35,17 +35,17 @@ function NotificationCard(props) {
       {/* date */}
       <div className="text-black text-lg font-bold flex justify-between">
         <div>
-          Date: <span>{dateFormat(props.date)}</span>
+          Start date: <span>{dateFormat(props.startDate)}</span>
         </div>
         <div>
-          For: <span>{props.for}</span>
+          Due date: <span>{dateFormat(props.dueDate)}</span>
         </div>
       </div>
 
-      {/* detailed information */}
+      {/* assigned employee */}
       <div className="flex justify-between px-8">
         <Link
-          to={`info/${props._id}`}
+          to={`assign/${props._id}`}
           className="text-lg h-full w-24 px-2 text-center rounded-xl bg-green-500 cursor-pointer font-semibold hover:bg-green-700 transition-all duration-150"
         >
           Info
@@ -76,7 +76,7 @@ function NotificationCard(props) {
                   className="bg-red-500 px-4 hover:bg-red-700  transition-all duration-200"
                   onClick={() => {
                     console.log(props._id);
-                    deleteNotification(props._id);
+                    deleteJob(props._id);
                   }}
                 >
                   Yes, Delete
@@ -96,4 +96,4 @@ function NotificationCard(props) {
   );
 }
 
-export default NotificationCard;
+export default JobCard;

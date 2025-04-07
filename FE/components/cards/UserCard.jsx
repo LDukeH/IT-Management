@@ -1,5 +1,4 @@
-import useModalStore from "../store/modalStore";
-import { useState } from "react";
+import useModalStore from "../../store/modalStore";
 
 function UserCard(props) {
   const { openDeleteModal } = useModalStore();

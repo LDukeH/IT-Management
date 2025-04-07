@@ -1,4 +1,3 @@
-import Navbar from "../../../components/Navbar";
 import UserInformation from "./UserInformation";
 import useUserStore from "../../../store/userStore";
 

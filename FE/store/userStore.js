@@ -54,7 +54,6 @@ const useUserStore = create(
         try {
           const response = await api.post("http://localhost:5000/users/logout");
           set({ currentUser: null });
-          notifySuccess("Logout successfully");
         } catch (error) {
           notifyError("Logout failed");
         }
@@ -67,6 +66,7 @@ const useUserStore = create(
         } catch (error) {
           if (error.response?.status === 401) {
             notifyError("There's no account logged in");
+            await get().logoutUser();
           } else {
             notifyError("Something went wrong. Please try again later.");
           }

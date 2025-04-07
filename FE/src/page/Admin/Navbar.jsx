@@ -12,7 +12,7 @@ function Navbar() {
       </Link>
 
       {/* baseColor should be passed as hex... */}
-      <UserDropdown user={currentUser} baseColor={"white"} />
+      <UserDropdown user={currentUser} baseColor={""} />
     </div>
   );
 }
