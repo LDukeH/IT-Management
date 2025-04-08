@@ -33,7 +33,10 @@ function EmployeeNotification() {
           <div className="h-24 w-full line-clamp-4 text-start">
             {notification.description}
           </div>
-          <Link className="border cursor-pointer rounded-sm px-2 py-1 hover:bg-black hover:text-white transition-all duration-300">
+          <Link
+            className="border cursor-pointer rounded-sm px-2 py-1 hover:bg-black hover:text-white transition-all duration-300"
+            to={`/notification/${notification._id}`}
+          >
             More
           </Link>
         </div>

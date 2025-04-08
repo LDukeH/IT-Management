@@ -4,7 +4,11 @@ import { useNavigate, useParams } from "react-router-dom";
 // icons
 import { CalendarIcon, BackIcon } from "../svg";
 
+// Link
 import { Link } from "react-router-dom";
+
+//Utils
+import { dateFormat } from "../utils/dateFormat";
 
 function AssignedUser(props) {
   return (
@@ -21,14 +25,6 @@ function JobInformation() {
   const { findJobByID, Job } = useJobStore();
   const navigate = useNavigate();
   const id = useParams().id;
-
-  const dateFormat = (date) => {
-    return new Date(date).toLocaleDateString("vi-VN", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-    });
-  };
 
   useEffect(() => {
     const handleFetch = async () => {

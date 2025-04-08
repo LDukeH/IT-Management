@@ -44,6 +44,17 @@ const useNotificationStore = create((set, get) => {
         console.log(error);
       }
     },
+    getNotificationByID: async (notificationID) => {
+      try {
+        const response = await api.get(
+          `http://localhost:5000/notifications/${notificationID}`
+        );
+        await get().getAllNotification();
+        return response.data;
+      } catch (error) {
+        console.error(error);
+      }
+    },
   };
 });
 

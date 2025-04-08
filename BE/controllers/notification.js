@@ -29,3 +29,13 @@ export const deleteNotification = async (req, res) => {
     console.log(error);
   }
 };
+
+export const getNotificationByID = async (req, res) => {
+  try {
+    const { notificationID } = req.params;
+    const notification = await Notification.findById(notificationID);
+    res.json(notification);
+  } catch (error) {
+    console.error(error);
+  }
+};

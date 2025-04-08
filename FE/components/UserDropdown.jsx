@@ -23,7 +23,7 @@ function UserDropdown({ user, baseColor }) {
         <DownIcon width="12" />
       </button>
       <div
-        className={`absolute right-0 top-16 w-36 h-fit shadow-lg border-t-1 flex flex-col items-center justify-center transition-all duration-150 divide-y z-10 border-black ${
+        className={`absolute top-16 w-36 h-fit shadow-lg border-t-1 flex flex-col items-center justify-center transition-all duration-150 divide-y z-10 border-black ${
           dropdownOpen
             ? "opacity-100 translate-y-0"
             : "opacity-0 -translate-y-1/12 invisible"

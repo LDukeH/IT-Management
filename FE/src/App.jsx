@@ -11,12 +11,19 @@ import useUserStore from "../store/userStore";
 import useNotificationStore from "../store/notificationStore";
 //
 import Layout from "./Layout";
-
+import NotFound from "../components/404_notfound";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />, // Wrap everything inside Layout
-    children: [homeRoutes, adminRoutes],
+    children: [
+      homeRoutes,
+      adminRoutes,
+      {
+        path: "*",
+        element: <NotFound />,
+      },
+    ],
   },
 ]);
 

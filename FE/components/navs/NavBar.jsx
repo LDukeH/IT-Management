@@ -25,10 +25,10 @@ function NavBar() {
       </Link>
       <div className="flex h-full gap-1">
         <NavBlock text="Home" link="/" />
-        <NavBlock text="About" />
+        <NavBlock text="About" link="/about" />
         <NavBlock text="Notification" link="/notification" />
-        <NavBlock text="Rules - Guides" />
-        <NavBlock text="Schedule" />
+        <NavBlock text="Rules - Guides" link="/rule" />
+        <NavBlock text="Schedule" link="/schedule" />
         {!currentUser ? "" : <></>}
       </div>
       <div>{currentUser ? <UserDropdown user={currentUser} /> : ""}</div>

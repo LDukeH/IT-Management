@@ -8,6 +8,7 @@ import UserEdit from "../src/page/User/UserEdit.jsx";
 import Notification from "../src/page/Home/Notification/Notification.jsx";
 import EmployeeNotification from "../src/page/Home/Notification/EmployeeNotifications.jsx";
 import ManagerNotifiCation from "../src/page/Home/Notification/ManagerNotification.jsx";
+import NotificationInformation from "../components/NotificationInformation.jsx";
 
 const notificationRoutes = {
   path: "notification",
@@ -20,6 +21,10 @@ const notificationRoutes = {
     {
       path: "manager",
       element: <ManagerNotifiCation />,
+    },
+    {
+      path: ":id",
+      element: <NotificationInformation />,
     },
   ],
 };

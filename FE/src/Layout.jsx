@@ -15,7 +15,7 @@ function Layout() {
 
   return (
     <>
-      {width > 780 ? <NavBar /> : <SideBar />}
+      {width > 59 ? <NavBar /> : <SideBar />}
       <Outlet />
       <LogoutModal />
       <DeleteModal />

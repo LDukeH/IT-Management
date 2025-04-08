@@ -1,3 +1,7 @@
+import useJobStore from "../../../store/jobStore";
+import useUserStore from "../../../store/userStore";
+import useNotificationStore from "../../../store/notificationStore";
+
 function DashBoardVideo() {
   return (
     <div className="flex justify-center items-center mb-6 relative z-10">
@@ -13,7 +17,7 @@ function DashBoardVideo() {
   );
 }
 
-function Revenue() {
+function Jobs({ number }) {
   return (
     <div className="card">
       <div className="p-3 mr-4 bg-green-100 rounded-full">
@@ -22,14 +26,14 @@ function Revenue() {
         </svg>
       </div>
       <div>
-        <p className="mb-2 text-sm font-medium text-gray-600">Revenue</p>
-        <p className="text-lg font-semibold text-gray-700">12,345,678 đ</p>
+        <p className="mb-2 text-sm font-medium text-gray-600">Jobs</p>
+        <p className="text-lg font-semibold text-gray-700">{number}</p>
       </div>
     </div>
   );
 }
 
-function Clients() {
+function Users({ number }) {
   return (
     <div className="card">
       <div className="p-3 mr-4  bg-orange-100 rounded-full">
@@ -38,57 +42,42 @@ function Clients() {
         </svg>
       </div>
       <div>
-        <p className="mb-2 text-sm font-medium text-gray-600">Total clients</p>
-        <p className="text-lg font-semibold text-gray-700">123</p>
+        <p className="mb-2 text-sm font-medium text-gray-600">Total users</p>
+        <p className="text-lg font-semibold text-gray-700">{number}</p>
       </div>
     </div>
   );
 }
 
-function Sold() {
+function Notifications({ number }) {
   return (
     <div className="card">
       <div className="p-3 mr-4  bg-blue-100 rounded-full">
-        <svg className="w-5 h-5" fill="blue" viewBox="0 0 20 20">
-          <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path>
+        <svg className="w-5 h-5" fill="blue" viewBox="0 0 24 24">
+          <path d="m16.899,20c-.465,2.279-2.485,4-4.899,4s-4.435-1.721-4.899-4h9.799Zm3.601-13c1.93,0,3.5-1.57,3.5-3.5s-1.57-3.5-3.5-3.5-3.5,1.57-3.5,3.5,1.57,3.5,3.5,3.5Zm.24,1.988c-.08.003-.159.012-.24.012-3.033,0-5.5-2.467-5.5-5.5,0-.904.223-1.756.612-2.509-1.182-.635-2.526-.991-3.936-.991C7.775,0,4.398,2.709,3.552,6.516l-2.35,7.597c-.597,1.93.846,3.886,2.866,3.886h15.656c2.08,0,3.529-2.065,2.821-4.021l-1.806-4.992Z" />
         </svg>
       </div>
       <div>
-        <p className="mb-2 text-sm font-medium text-gray-600">Orders Sold</p>
-        <p className="text-lg font-semibold text-gray-700">456</p>
-      </div>
-    </div>
-  );
-}
-
-function Completed() {
-  return (
-    <div className="card">
-      <div className="p-3 mr-4  bg-teal-100 rounded-full">
-        <svg className="w-5 h-5" fill="teal" viewBox="0 0 20 20">
-          <path d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z"></path>
-        </svg>
-      </div>
-      <div>
-        <p className="mb-2 text-sm font-medium text-gray-600">
-          Completed Orders
-        </p>
-        <p className="text-lg font-semibold text-gray-700">789</p>
+        <p className="mb-2 text-sm font-medium text-gray-600">Notifications</p>
+        <p className="text-lg font-semibold text-gray-700">{number}</p>
       </div>
     </div>
   );
 }
 
 function DashBoard() {
+  const { users } = useUserStore();
+  const { jobs } = useJobStore();
+  const { notifications } = useNotificationStore();
+
   return (
     <div className="w-full mx-auto px-12 py-4 bg-gray-50 min-h-100vh">
       <h1 className="my-6 text-2xl font-semibold text-gray-700">Dashboard</h1>
       <DashBoardVideo />
-      <div className="grid grid-cols-1 gap-6 xl:grid-cols-4 md:grid-cols-2 ">
-        <Clients />
-        <Revenue />
-        <Sold />
-        <Completed />
+      <div className="grid grid-cols-1 gap-6 xl:grid-cols-3 md:grid-cols-2 ">
+        <Users number={users.length} />
+        <Jobs number={jobs.length} />
+        <Notifications number={notifications.length} />
       </div>
     </div>
   );

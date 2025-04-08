@@ -4,13 +4,16 @@ import { Outlet } from "react-router";
 import useJobStore from "../../../store/jobStore";
 import useUserStore from "../../../store/userStore";
 import Loader from "../../../components/Loader";
+import useNotificationStore from "../../../store/notificationStore";
 
 function adminPage() {
   const { getAllUser, currentUser } = useUserStore();
   const { getAllJob } = useJobStore();
+  const { getAllNotification } = useNotificationStore();
   useEffect(() => {
     getAllUser();
     getAllJob();
+    getAllNotification();
   }, []);
 
   return !currentUser ? (
